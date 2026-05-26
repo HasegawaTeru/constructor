@@ -9,6 +9,7 @@ struct PlayerSettings
 	int SPD;
 };
 
+//　勇者の設定
 PlayerSettings hero = {
 	1000, 100, 100, 50, 10
 };
@@ -24,7 +25,9 @@ public:
 	{
 	}
 
+	//　引数を受け取る（名前、設定）
 	Player(std::string name, const PlayerSettings& settings)
+		//　名前（勇者）設定（hero）から数値を参照
 		: Name(name), Settings(settings)
 	{
 	}
@@ -43,7 +46,8 @@ void Show(const Player& player)
 
 int main()
 {
+	//　Playerクラス（名前：勇者、設定：hero）をplayerに代入
 	Player player("勇者", hero);
-
+	//　playerの情報を表示
 	Show(player);
 }
