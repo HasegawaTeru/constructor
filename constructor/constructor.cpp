@@ -69,6 +69,7 @@ void Show(const Player& player)
 
 int main()
 {
+	//　設定：customにユーザーからの入力を受け取る
 	GetSettings(custom);
 	//　Playerクラス（設定：hero）をplayerに代入
 	Player player(hero);
