@@ -2,6 +2,7 @@
 
 struct PlayerSettings
 {
+	char Name[256];
 	int HP;
 	int MP;
 	int ATK;
@@ -11,31 +12,30 @@ struct PlayerSettings
 
 //　勇者の設定
 PlayerSettings hero = {
-	1000, 100, 100, 50, 10
+	"勇者", 1000, 100, 100, 50, 10
 };
 
 class Player
 {
 public:
-	std::string Name;
 	PlayerSettings Settings;
 
 	Player(const Player& other)
-		: Player(other.Name, other.Settings)
+		: Player(other.Settings)
 	{
 	}
 
 	//　引数を受け取る（名前、設定）
-	Player(std::string name, const PlayerSettings& settings)
+	Player(const PlayerSettings& settings)
 		//　名前（勇者）設定（hero）から数値を参照
-		: Name(name), Settings(settings)
+		: Settings(settings)
 	{
 	}
 };
 
 void Show(const Player& player)
 {
-	std::cout << "Name : "  << player.Name
+	std::cout << "Name : "  << player.Settings.Name
 			  << ", HP : "  << player.Settings.HP
 			  << ", MP : "  << player.Settings.MP
 			  << ", ATK : " << player.Settings.ATK
@@ -47,7 +47,7 @@ void Show(const Player& player)
 int main()
 {
 	//　Playerクラス（名前：勇者、設定：hero）をplayerに代入
-	Player player("勇者", hero);
+	Player player(hero);
 	//　playerの情報を表示
 	Show(player);
 }
