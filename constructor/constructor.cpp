@@ -14,6 +14,12 @@ struct PlayerSettings
 PlayerSettings hero = {
 	"勇者", 1000, 100, 100, 50, 10
 };
+//　魔法使いの設定
+PlayerSettings magician = {
+	"魔法使い", 400, 300, 30, 20, 5
+};
+
+PlayerSettings custom;
 
 class Player
 {
@@ -25,13 +31,30 @@ public:
 	{
 	}
 
-	//　引数を受け取る（名前、設定）
+	//　引数を受け取る（設定）
 	Player(const PlayerSettings& settings)
-		//　名前（勇者）設定（hero）から数値を参照
+		//　設定（hero）から設定を参照
 		: Settings(settings)
 	{
 	}
 };
+
+void GetSettings(PlayerSettings& settings)
+{
+	std::cout << "Name : ";
+	std::cin >> settings.Name;
+	std::cout << "HP   : ";
+	std::cin >> settings.HP;
+	std::cout << "MP   : ";
+	std::cin >> settings.MP;
+	std::cout << "ATK  : ";
+	std::cin >> settings.ATK;
+	std::cout << "DEF  : ";
+	std::cin >> settings.DEF;
+	std::cout << "SPD  : ";
+	std::cin >> settings.SPD;
+	std::cout << std::endl;
+}
 
 void Show(const Player& player)
 {
@@ -46,8 +69,13 @@ void Show(const Player& player)
 
 int main()
 {
-	//　Playerクラス（名前：勇者、設定：hero）をplayerに代入
+	GetSettings(custom);
+	//　Playerクラス（設定：hero）をplayerに代入
 	Player player(hero);
+	Player player2(magician);
+	Player player3(custom);
 	//　playerの情報を表示
 	Show(player);
+	Show(player2);
+	Show(player3);
 }
